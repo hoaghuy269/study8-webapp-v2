@@ -26,5 +26,10 @@
         "dont_have_account": "Bạn chưa có tài khoản? "
       }
     }
+  },
+  "api": {
+    "error": {
+      "status_500": "Lỗi kết nối máy chủ"
+    }
   }
 }
