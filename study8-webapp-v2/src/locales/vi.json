@@ -53,8 +53,9 @@
         }
       },
       "otp": {
-        "label": "Nhập OTP được gửi đến email của bạn",
-        "resend": "Bạn không nhận được OTP?"
+        "label": "Nhập mã xác thực được gửi đến email của bạn",
+        "resend": "Bạn không nhận được mã xác thực?",
+        "error": "Vui lòng nhập đầy đủ mã xác thực của bạn"
       },
       "button": {
         "register": "Đăng ký",
@@ -62,6 +63,28 @@
         "resend": "Gửi lại",
         "resend_in": "Gửi lại sau",
         "back": "Trở lại"
+      },
+      "name": {
+        "label": "Tên của bạn",
+        "placeholder": "Nhập tên của bạn",
+        "validation": {
+          "required": "Tên không được để trống"
+        }
+      },
+      "password": {
+        "label": "Mật khẩu",
+        "placeholder": "Mật khẩu",
+        "validation": {
+          "required": "Mật khẩu không được để trống",
+          "pattern": "Mật khẩu phải có ít nhất 10 ký tự, bao gồm chữ hoa, chữ thường và ký tự đặc biệt, và không chứa khoảng trắng"
+        }
+      },
+      "retype_password": {
+        "label": "Nhập lại mật khẩu",
+        "placeholder": "Nhập lại mật khẩu"
+      },
+      "role": {
+        "label": "Bạn là?"
       }
     }
   }

@@ -75,20 +75,26 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
 
     // Handle form submit
     const onSubmit = async () => {
-        setIsLoading(true);
+        // setIsLoading(true);
+        // const otpValue = otpInputs.current.map(input => input.value).join("");
+        // try {
+        //     await authService.registerVERIFY(id, otpValue);
+        //
+        //     // Do next page
+        //     nextStep();
+        // } catch (error) {
+        //     addToast(error.message, "error");
+        // } finally {
+        //     setIsLoading(false);
+        // }
 
         const otpValue = otpInputs.current.map(input => input.value).join("");
-
-        try {
-            await authService.registerVERIFY(id, otpValue);
-
-            // Do next page
-            nextStep();
-        } catch (error) {
-            addToast(error.message, "error");
-        } finally {
-            setIsLoading(false);
+        if (otpValue.length !== 4) {
+            addToast(t("register_page.form.otp.error"), "error");
+            return;
         }
+
+        nextStep();
     };
 
     return (
