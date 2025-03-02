@@ -2,6 +2,7 @@ import {t} from "i18next";
 import RegisterFirstStepForm from "../forms/RegisterFirstStepForm.jsx";
 import RegisterSecondStepForm from "../forms/RegisterSecondStepForm.jsx";
 import {useState} from "react";
+import RegisterThirdStepForm from "../forms/RegisterThirdStepForm.jsx";
 
 const RegisterPage = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -23,6 +24,7 @@ const RegisterPage = () => {
                         </h1>
                         {currentStep === 1 && <RegisterFirstStepForm nextStep={nextStep} setId={setId}/>}
                         {currentStep === 2 && <RegisterSecondStepForm nextStep={nextStep} prevStep={prevStep} id={id}/>}
+                        {currentStep === 3 && <RegisterThirdStepForm prevStep={prevStep} id={id}/>}
                     </div>
                 </div>
             </div>

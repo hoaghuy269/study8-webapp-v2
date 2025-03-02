@@ -10,6 +10,9 @@ const authService = {
     },
     registerOTP: async (id) => {
         return apiCaller.post(API_URL.REGISTER, {id, step: "OTP"});
+    },
+    registerVERIFY: async (id, otp) => {
+        return apiCaller.post(API_URL.REGISTER, {id, otp, step: "VERIFY"});
     }
 };
 

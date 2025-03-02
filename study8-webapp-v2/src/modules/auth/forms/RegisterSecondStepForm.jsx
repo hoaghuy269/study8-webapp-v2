@@ -2,23 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { t } from "i18next";
 import SubmitButton from "../../../components/button/SubmitButton.jsx";
+import authService from "../services/AuthService.jsx";
+import {useToast} from "../../../hook/useToast.js";
 
 const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
+    const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState(false);
+    const [isResending, setIsResending] = useState(false);
     const { handleSubmit } = useForm();
     const otpInputs = useRef([]);
     const [countdown, setCountdown] = useState(0);
 
-    // useEffect để giảm dần thời gian đếm ngược
-    useEffect(() => {
-        if (countdown > 0) {
-            const timer = setInterval(() => {
-                setCountdown((prev) => prev - 1);
-            }, 1000);
-
-            return () => clearInterval(timer);
-        }
-    }, [countdown]);
 
     // Handle OTP input
     const handleInput = (e, index) => {
@@ -54,17 +48,47 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
     };
 
     // Handle resend OTP
-    const handleResendOTP = () => {
-        if (countdown === 0) {
-            console.log("Resend OTP clicked");
-            setCountdown(20);
+    useEffect(() => {
+        if (countdown > 0) {
+            const timer = setInterval(() => {
+                setCountdown((prev) => prev - 1);
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [countdown]);
+
+    const handleResendOTP = async () => {
+        if (countdown === 0 && !isResending) {
+            setIsResending(true);
+
+            try {
+                await authService.registerOTP(id);
+                setCountdown(20);
+            } catch (error) {
+                addToast(error.message, "error");
+            } finally {
+                setIsResending(false);
+            }
         }
     };
 
     // Handle form submit
-    const onSubmit = async (data) => {
-        console.log("Form Data:", data);
-        nextStep();
+    const onSubmit = async () => {
+        setIsLoading(true);
+
+        const otpValue = otpInputs.current.map(input => input.value).join("");
+
+        try {
+            await authService.registerVERIFY(id, otpValue);
+
+            // Do next page
+            nextStep();
+        } catch (error) {
+            addToast(error.message, "error");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -92,13 +116,23 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
                 {t("register_page.form.otp.resend")}{" "}
                 <button
                     type="button"
-                    className={`text-indigo-600 font-medium ${countdown > 0 ? "opacity-50 cursor-not-allowed" : "hover:underline"}`}
+                    className={`text-indigo-600 font-medium ${
+                        countdown > 0 ? "opacity-50 cursor-not-allowed" : "hover:underline"
+                    }`}
                     onClick={handleResendOTP}
-                    disabled={countdown > 0}
+                    disabled={countdown > 0 || isResending}
                 >
-                    {countdown > 0 ? `${t("register_page.form.button.resend_in")} ${countdown}s` : t("register_page.form.button.resend")}
+                    {isResending ? (
+                        <span
+                            className="animate-spin inline-block h-4 w-4 border-2 border-indigo-600 border-t-transparent rounded-full"></span>
+                    ) : countdown > 0 ? (
+                        `${t("register_page.form.button.resend_in")} ${countdown}s`
+                    ) : (
+                        t("register_page.form.button.resend")
+                    )}
                 </button>
             </div>
+
 
             {/* Navigation Buttons */}
             <div className="flex flex-col items-center gap-2">
