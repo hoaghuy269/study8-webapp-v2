@@ -1,7 +1,15 @@
 import {t} from "i18next";
 import RegisterFirstStepForm from "../forms/RegisterFirstStepForm.jsx";
+import RegisterSecondStepForm from "../forms/RegisterSecondStepForm.jsx";
+import {useState} from "react";
 
 const RegisterPage = () => {
+    const [currentStep, setCurrentStep] = useState(1);
+    const [id, setId] = useState(null);
+
+    const nextStep = () => setCurrentStep((prev) => prev + 1);
+    const prevStep = () => setCurrentStep((prev) => prev - 1);
+
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -13,7 +21,8 @@ const RegisterPage = () => {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             {t("register_page.title")}
                         </h1>
-                        <RegisterFirstStepForm />
+                        {currentStep === 1 && <RegisterFirstStepForm nextStep={nextStep} setId={setId}/>}
+                        {currentStep === 2 && <RegisterSecondStepForm nextStep={nextStep} prevStep={prevStep} />}
                     </div>
                 </div>
             </div>

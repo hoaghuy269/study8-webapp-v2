@@ -5,8 +5,11 @@ import {useForm} from "react-hook-form";
 import SubmitButton from "../../../components/button/SubmitButton.jsx";
 import {useState} from "react";
 import CheckboxField from "../../../components/field/CheckboxField.jsx";
+import authService from "../services/AuthService.jsx";
+import {useToast} from "../../../hook/useToast.js";
 
-const RegisterFirstStepForm = () => {
+const RegisterFirstStepForm = ({ nextStep, setId }) => {
+    const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -16,7 +19,21 @@ const RegisterFirstStepForm = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log("Form Data:", data);
+        setIsLoading(true);
+        try {
+            const response = await authService.registerCREATE(data.email);
+            if (response.data.id != null) {
+                setId(response.data.id);
+                await authService.registerOTP(response.data.id);
+
+                // Do next page
+                nextStep();
+            }
+        } catch (error) {
+            addToast(error.message, "error");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
