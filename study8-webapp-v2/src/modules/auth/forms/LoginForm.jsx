@@ -3,7 +3,7 @@ import InputField from "../../../components/field/InputField.jsx";
 import {EMAIL_PATTERN} from "../../../constants/validation.js";
 import {t} from "i18next";
 import authService from "../services/AuthService.jsx";
-import {useToast} from "../../../context/ToastContext.jsx";
+import {useToast} from "../../../hook/useToast.js";
 
 const LoginForm = () => {
     const { addToast } = useToast();

@@ -1,7 +1,6 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Toast from "../components/common/Toast.jsx";
-
-const ToastContext = createContext();
+import {ToastContext} from "../context/ToastContext.js";
 
 export const ToastProvider = ({ children }) => {
     const [toasts, setToasts] = useState([]);
@@ -20,13 +19,14 @@ export const ToastProvider = ({ children }) => {
             {children}
             <div className="fixed top-4 right-4 flex flex-col gap-2 z-50">
                 {toasts.map((toast) => (
-                    <Toast key={toast.id} message={toast.message} type={toast.type} onClose={() => setToasts((prev) => prev.filter((t) => t.id !== toast.id))} />
+                    <Toast
+                        key={toast.id}
+                        message={toast.message}
+                        type={toast.type}
+                        onClose={() => setToasts((prev) => prev.filter((t) => t.id !== toast.id))}
+                    />
                 ))}
             </div>
         </ToastContext.Provider>
     );
-};
-
-export const useToast = () => {
-    return useContext(ToastContext);
 };
