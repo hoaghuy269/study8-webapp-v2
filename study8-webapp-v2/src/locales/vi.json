@@ -34,5 +34,27 @@
   },
   "common": {
     "loading": "Đang xử lý..."
+  },
+  "register_page": {
+    "title": "Tạo tài khoản mới",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "email@domain.com",
+        "validation": {
+          "required": "Email không được để trống",
+          "pattern": "Email không đúng dịnh dạng"
+        }
+      },
+      "terms": {
+        "label": "Tôi chấp nhận Điều khoản và Chính sách quyền riêng tư",
+        "validation": {
+          "required": "Bạn phải đồng ý với Điều khoản và Chính sách quyền riêng tư"
+        }
+      },
+      "button": {
+        "register": "Đăng ký"
+      }
+    }
   }
 }

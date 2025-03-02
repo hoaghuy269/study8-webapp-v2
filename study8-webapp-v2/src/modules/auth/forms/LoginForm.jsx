@@ -6,6 +6,8 @@ import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
 import SubmitButton from "../../../components/button/SubmitButton.jsx";
 import {useState} from "react";
+import {Link} from "react-router-dom";
+import ROUTES from "../../../constants/routes.js";
 
 const LoginForm = () => {
     const { addToast } = useToast();
@@ -79,9 +81,9 @@ const LoginForm = () => {
             {/* Register Link */}
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 {t("login_page.form.text.dont_have_account")}
-                <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                <Link to={ROUTES.REGISTER} className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                     {t("login_page.form.button.register")}
-                </a>
+                </Link>
             </p>
         </form>
     )
