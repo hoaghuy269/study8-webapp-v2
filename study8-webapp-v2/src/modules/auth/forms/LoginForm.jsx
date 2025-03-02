@@ -1,12 +1,12 @@
 import {useForm} from "react-hook-form";
-import InputField from "../../../components/fields/InputField.jsx";
+import InputField from "../../../components/field/InputField.jsx";
 import {EMAIL_PATTERN} from "../../../constants/validation.js";
 import {t} from "i18next";
 import authService from "../services/AuthService.jsx";
-import {useState} from "react";
+import {useToast} from "../../../context/ToastContext.jsx";
 
 const LoginForm = () => {
-    const [errorMessage, setErrorMessage] = useState("");
+    const { addToast } = useToast();
 
     const {
         register,
@@ -15,15 +15,13 @@ const LoginForm = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        setErrorMessage("");
         console.log("Form Data:", data);
 
         try {
             const response = await authService.login(data.email, data.password);
             console.log("Login successful:", response);
         } catch (error) {
-            setErrorMessage(error.message || "Đăng nhập thất bại!");
-            console.log("API Error:", errorMessage);
+            addToast(error.message, "error");
         }
     };
 
