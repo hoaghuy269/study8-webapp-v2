@@ -52,8 +52,16 @@
           "required": "Bạn phải đồng ý với Điều khoản và Chính sách quyền riêng tư"
         }
       },
+      "otp": {
+        "label": "Nhập OTP được gửi đến email của bạn",
+        "resend": "Bạn không nhận được OTP?"
+      },
       "button": {
-        "register": "Đăng ký"
+        "register": "Đăng ký",
+        "verify": "Xác nhận",
+        "resend": "Gửi lại",
+        "resend_in": "Gửi lại sau",
+        "back": "Trở lại"
       }
     }
   }

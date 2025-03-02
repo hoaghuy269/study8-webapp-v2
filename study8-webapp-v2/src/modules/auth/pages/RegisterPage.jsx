@@ -22,7 +22,7 @@ const RegisterPage = () => {
                             {t("register_page.title")}
                         </h1>
                         {currentStep === 1 && <RegisterFirstStepForm nextStep={nextStep} setId={setId}/>}
-                        {currentStep === 2 && <RegisterSecondStepForm nextStep={nextStep} prevStep={prevStep} />}
+                        {currentStep === 2 && <RegisterSecondStepForm nextStep={nextStep} prevStep={prevStep} id={id}/>}
                     </div>
                 </div>
             </div>
