@@ -31,5 +31,8 @@
     "error": {
       "status_500": "Lỗi kết nối máy chủ"
     }
+  },
+  "common": {
+    "loading": "Đang xử lý..."
   }
 }

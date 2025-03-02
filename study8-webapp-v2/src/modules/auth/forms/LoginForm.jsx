@@ -4,9 +4,12 @@ import {EMAIL_PATTERN} from "../../../constants/validation.js";
 import {t} from "i18next";
 import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
+import SubmitButton from "../../../components/button/SubmitButton.jsx";
+import {useState} from "react";
 
 const LoginForm = () => {
     const { addToast } = useToast();
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -16,12 +19,15 @@ const LoginForm = () => {
 
     const onSubmit = async (data) => {
         console.log("Form Data:", data);
+        setIsLoading(true);
 
         try {
             const response = await authService.login(data.email, data.password);
             console.log("Login successful:", response);
         } catch (error) {
             addToast(error.message, "error");
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -65,14 +71,10 @@ const LoginForm = () => {
             </div>
 
             {/* Submit Button */}
-            <button
-                type="submit"
-                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300
-               font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-                {t("login_page.form.button.login")}
-            </button>
-
+            <SubmitButton
+                label={t("login_page.form.button.login")}
+                isLoading={isLoading}
+            />
 
             {/* Register Link */}
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
