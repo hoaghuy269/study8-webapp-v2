@@ -1,0 +1,91 @@
+{
+  "login_page": {
+    "title": "Đăng nhập vào tài khoản của bạn",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Email",
+        "validation": {
+          "required": "Email không được để trống",
+          "pattern": "Email không đúng dịnh dạng"
+        }
+      },
+      "password": {
+        "label": "Mật khẩu",
+        "placeholder": "Mật khẩu",
+        "validation": {
+          "required": "Mật khẩu không được để trống"
+        }
+      },
+      "button": {
+        "forgot_password": "Bạn quên mật khẩu?",
+        "login": "Đăng nhập",
+        "register": "Đăng ký"
+      },
+      "text": {
+        "dont_have_account": "Bạn chưa có tài khoản? "
+      }
+    }
+  },
+  "api": {
+    "error": {
+      "status_500": "Lỗi kết nối máy chủ"
+    }
+  },
+  "common": {
+    "loading": "Đang xử lý..."
+  },
+  "register_page": {
+    "title": "Tạo tài khoản mới",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "email@domain.com",
+        "validation": {
+          "required": "Email không được để trống",
+          "pattern": "Email không đúng dịnh dạng"
+        }
+      },
+      "terms": {
+        "label": "Tôi chấp nhận Điều khoản và Chính sách quyền riêng tư",
+        "validation": {
+          "required": "Bạn phải đồng ý với Điều khoản và Chính sách quyền riêng tư"
+        }
+      },
+      "otp": {
+        "label": "Nhập mã xác thực được gửi đến email của bạn",
+        "resend": "Bạn không nhận được mã xác thực?",
+        "error": "Vui lòng nhập đầy đủ mã xác thực của bạn"
+      },
+      "button": {
+        "register": "Đăng ký",
+        "verify": "Xác nhận",
+        "resend": "Gửi lại",
+        "resend_in": "Gửi lại sau",
+        "back": "Trở lại"
+      },
+      "name": {
+        "label": "Tên của bạn",
+        "placeholder": "Nhập tên của bạn",
+        "validation": {
+          "required": "Tên không được để trống"
+        }
+      },
+      "password": {
+        "label": "Mật khẩu",
+        "placeholder": "Mật khẩu",
+        "validation": {
+          "required": "Mật khẩu không được để trống",
+          "pattern": "Mật khẩu phải có ít nhất 10 ký tự, bao gồm chữ hoa, chữ thường và ký tự đặc biệt, và không chứa khoảng trắng"
+        }
+      },
+      "retype_password": {
+        "label": "Nhập lại mật khẩu",
+        "placeholder": "Nhập lại mật khẩu"
+      },
+      "role": {
+        "label": "Bạn là?"
+      }
+    }
+  }
+}
