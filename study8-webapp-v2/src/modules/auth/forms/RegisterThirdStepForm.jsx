@@ -8,7 +8,8 @@ import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
 import InputField from "../../../components/field/InputField.jsx";
 import InfoInputField from "../../../components/field/InfoInputField.jsx";
-import SelectField from "../../../components/field/SelectField.jsx";
+import SelectField from "../../../components/field/AsyncSelectField.jsx";
+import AsyncSelectField from "../../../components/field/AsyncSelectField.jsx";
 
 const RegisterThirdStepForm = ({ nextStep, setId }) => {
     const { addToast } = useToast();
@@ -17,6 +18,7 @@ const RegisterThirdStepForm = ({ nextStep, setId }) => {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors },
     } = useForm();
 
@@ -35,22 +37,23 @@ const RegisterThirdStepForm = ({ nextStep, setId }) => {
                 register={register}
                 errors={errors}
                 validation={{
-                    required: t("login_page.form.email.validation.required")
+                    required: t("register_page.form.name.validation.required"),
                 }}
             />
 
             {/* Role Select */}
-            <SelectField
+            <AsyncSelectField
                 id="role"
                 label={t("register_page.form.role.label")}
-                options={[
-                    { value: "teacher", label: t("register_page.form.role.teacher") },
-                    { value: "student", label: t("register_page.form.role.student") }
-                ]}
-                register={register}
+                placeholder={t("register_page.form.role.placeholder")}
+                url="/api/v1/sys/public/constant?groupCode=SYSTEM_ROLE"
+                control={control}
                 errors={errors}
-                validation={{ required: t("register_page.form.role.validation.required") }}
+                validation={{
+                    required: t("register_page.form.role.validation.required"),
+                }}
             />
+
 
             {/* Password Input */}
             <InfoInputField
