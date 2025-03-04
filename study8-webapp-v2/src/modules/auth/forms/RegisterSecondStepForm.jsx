@@ -23,6 +23,11 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
     };
 
     const handleKeyDown = (e, index) => {
+        //Note: Accept Ctrl + V
+        if (e.ctrlKey && e.key === "v") {
+            return;
+        }
+
         if (!/^[0-9]$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
             e.preventDefault();
         }
@@ -36,7 +41,6 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
     };
 
     const handlePaste = (e) => {
-        e.preventDefault();
         const text = e.clipboardData.getData("text").trim();
         if (/^\d{4}$/.test(text)) {
             text.split("").forEach((char, index) => {
@@ -44,6 +48,8 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
                     otpInputs.current[index].value = char;
                 }
             });
+
+            otpInputs.current[3]?.focus();
         }
     };
 
@@ -111,6 +117,7 @@ const RegisterSecondStepForm = ({ nextStep, prevStep, id }) => {
                         ref={(el) => (otpInputs.current[index] = el)}
                         onInput={(e) => handleInput(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
+                        onPaste={handlePaste}
                     />
                 ))}
             </div>
