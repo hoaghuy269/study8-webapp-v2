@@ -3,7 +3,7 @@ import RegisterFirstStepForm from "../forms/RegisterFirstStepForm.jsx";
 import RegisterSecondStepForm from "../forms/RegisterSecondStepForm.jsx";
 import {useState} from "react";
 import RegisterThirdStepForm from "../forms/RegisterThirdStepForm.jsx";
-import RegisterSucessForm from "../forms/RegisterSucessForm.jsx";
+import RegisterSucessForm from "../forms/RegisterSuccessForm.jsx";
 
 const RegisterPage = () => {
     const [currentStep, setCurrentStep] = useState(1);
