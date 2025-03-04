@@ -84,7 +84,11 @@
         "placeholder": "Nhập lại mật khẩu"
       },
       "role": {
-        "label": "Bạn là?"
+        "label": "Bạn là?",
+        "placeholder": "Vui lòng chọn vai trò của bạn",
+        "validation": {
+          "required": "Chọn ít nhất một vai trò"
+        }
       }
     }
   }
