@@ -29,7 +29,7 @@
   },
   "api": {
     "error": {
-      "status_500": "Lỗi kết nối máy chủ"
+      "status_500": "Lỗi kết nối máy chủ, vui lòng thử lại sau ít phút"
     }
   },
   "common": {
@@ -76,7 +76,8 @@
         "placeholder": "Mật khẩu",
         "validation": {
           "required": "Mật khẩu không được để trống",
-          "pattern": "Mật khẩu phải có ít nhất 10 ký tự, bao gồm chữ hoa, chữ thường và ký tự đặc biệt, và không chứa khoảng trắng"
+          "pattern": "Mật khẩu phải có ít nhất 10 ký tự, bao gồm chữ hoa, chữ thường và ký tự đặc biệt, và không chứa khoảng trắng",
+          "match": "Mật khẩu nhập lại chưa chính xác"
         }
       },
       "retype_password": {
@@ -90,6 +91,13 @@
           "required": "Chọn ít nhất một vai trò"
         }
       }
+    }
+  },
+  "text": {
+    "auth": {
+      "register_success": "Đăng ký thành công",
+      "login_to_using": "Vui lòng đăng nhập để tiếp tục sử dụng",
+      "login_now": "Đăng nhập ngay"
     }
   }
 }

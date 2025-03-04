@@ -19,22 +19,21 @@ const RegisterFirstStepForm = ({ nextStep, setId }) => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        // setIsLoading(true);
-        // try {
-        //     const response = await authService.registerCREATE(data.email);
-        //     if (response.data.id != null) {
-        //         setId(response.data.id);
-        //         await authService.registerOTP(response.data.id);
-        //
-        //         // Do next page
-        //         nextStep();
-        //     }
-        // } catch (error) {
-        //     addToast(error.message, "error");
-        // } finally {
-        //     setIsLoading(false);
-        // }
-        nextStep();
+        setIsLoading(true);
+        try {
+            const response = await authService.registerCREATE(data.email);
+            if (response.data.id != null) {
+                setId(response.data.id);
+                await authService.registerOTP(response.data.id);
+
+                // Do next page
+                nextStep();
+            }
+        } catch (error) {
+            addToast(error.message, "error");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (

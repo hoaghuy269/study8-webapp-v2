@@ -3,6 +3,7 @@ import RegisterFirstStepForm from "../forms/RegisterFirstStepForm.jsx";
 import RegisterSecondStepForm from "../forms/RegisterSecondStepForm.jsx";
 import {useState} from "react";
 import RegisterThirdStepForm from "../forms/RegisterThirdStepForm.jsx";
+import RegisterSucessForm from "../forms/RegisterSucessForm.jsx";
 
 const RegisterPage = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -24,7 +25,8 @@ const RegisterPage = () => {
                         </h1>
                         {currentStep === 1 && <RegisterFirstStepForm nextStep={nextStep} setId={setId}/>}
                         {currentStep === 2 && <RegisterSecondStepForm nextStep={nextStep} prevStep={prevStep} id={id}/>}
-                        {currentStep === 3 && <RegisterThirdStepForm prevStep={prevStep} id={id}/>}
+                        {currentStep === 3 && <RegisterThirdStepForm nextStep={nextStep} prevStep={prevStep} id={id}/>}
+                        {currentStep === 4 && <RegisterSucessForm/>}
                     </div>
                 </div>
             </div>

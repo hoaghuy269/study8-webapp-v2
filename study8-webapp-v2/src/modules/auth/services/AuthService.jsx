@@ -13,7 +13,10 @@ const authService = {
     },
     registerVERIFY: async (id, otp) => {
         return apiCaller.post(API_URL.REGISTER, {id, otp, step: "VERIFY"});
-    }
+    },
+    registerSUBMIT: async (id, password, name, role) => {
+        return apiCaller.post(API_URL.REGISTER, {id, password, name, role, step: "SUBMIT"});
+    },
 };
 
 export default authService;
