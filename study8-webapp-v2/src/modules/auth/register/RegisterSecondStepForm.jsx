@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { t } from "i18next";
-import SubmitButton from "../../../components/button/SubmitButton.jsx";
+import SubmitButton from "../components/button/SubmitButton.jsx";
 import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
 

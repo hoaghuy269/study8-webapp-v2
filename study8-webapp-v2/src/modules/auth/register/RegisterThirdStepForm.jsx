@@ -1,13 +1,13 @@
 import {t} from "i18next";
 import {PASSWORD_PATTERN} from "../../../constants/validation.js";
 import {useForm} from "react-hook-form";
-import SubmitButton from "../../../components/button/SubmitButton.jsx";
+import SubmitButton from "../components/button/SubmitButton.jsx";
 import {useState} from "react";
 import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
-import InputField from "../../../components/field/InputField.jsx";
-import InfoInputField from "../../../components/field/InfoInputField.jsx";
-import AsyncSelectField from "../../../components/field/AsyncSelectField.jsx";
+import InputField from "../components/field/InputField.jsx";
+import InfoInputField from "../components/field/InfoInputField.jsx";
+import AsyncSelectField from "../components/field/AsyncSelectField.jsx";
 
 const RegisterThirdStepForm = ({ nextStep, prevStep, id }) => {
     const { addToast } = useToast();

@@ -1,10 +1,10 @@
-import InputField from "../../../components/field/InputField.jsx";
+import InputField from "../components/field/InputField.jsx";
 import {t} from "i18next";
 import {EMAIL_PATTERN} from "../../../constants/validation.js";
 import {useForm} from "react-hook-form";
-import SubmitButton from "../../../components/button/SubmitButton.jsx";
+import SubmitButton from "../components/button/SubmitButton.jsx";
 import {useState} from "react";
-import CheckboxField from "../../../components/field/CheckboxField.jsx";
+import CheckboxField from "../components/field/CheckboxField.jsx";
 import authService from "../services/AuthService.jsx";
 import {useToast} from "../../../hook/useToast.js";
 

@@ -1,11 +1,11 @@
 import {t} from "i18next";
-import RegisterFirstStepForm from "../forms/RegisterFirstStepForm.jsx";
-import RegisterSecondStepForm from "../forms/RegisterSecondStepForm.jsx";
+import RegisterFirstStepForm from "./RegisterFirstStepForm.jsx";
+import RegisterSecondStepForm from "./RegisterSecondStepForm.jsx";
 import {useState} from "react";
-import RegisterThirdStepForm from "../forms/RegisterThirdStepForm.jsx";
-import RegisterSucessForm from "../forms/RegisterSuccessForm.jsx";
+import RegisterThirdStepForm from "./RegisterThirdStepForm.jsx";
+import RegisterSucessForm from "./RegisterSuccessForm.jsx";
 
-const RegisterPage = () => {
+const Register = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [id, setId] = useState(null);
 
@@ -34,4 +34,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage
+export default Register
